@@ -1,0 +1,26 @@
+@include 'scss/breakpoints';
+@include 'scss/functions';
+
+//**
+//* @mixin: media-stack()
+//*
+//* @uses build-media-stack()
+//*
+//* @param mixed $args The media stack arguments.
+//*
+@mixin media-stack( $args ) {
+	@media #{build-media-stack( $args )} {
+		@content;
+	}
+}
+
+//**
+//* @mixin: ms()
+//*
+//* A shorthand for the media stack mixin.
+//*
+@mixin ms( $args ) {
+	@include media-stack( $args ) {
+		@content;
+	}
+}

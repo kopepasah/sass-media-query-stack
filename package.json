@@ -1,0 +1,34 @@
+{
+  "name": "sass-media-stack",
+  "version": "0.0.1",
+  "description": "Sass mixin which builds media queries, from simple to complex.",
+  "main": "false",
+  "scripts": {
+    "test": "npm run tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xwp/sass-media-stack.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "media",
+    "media query",
+    "query",
+    "queries",
+    "responsive",
+    "mobile first"
+  ],
+  "author": "Justin Kopepasah <justin@kopepasah.com> (https://kopepasah.com)",
+  "contributors": [
+    "XWP <tech@xwp.co> (https://xwp.co)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xwp/sass-media-stack/issues"
+  },
+  "homepage": "https://github.com/xwp/sass-media-stack#readme",
+  "files": [],
+  "main": "_media-stack.scss"
+}

@@ -1,0 +1,112 @@
+//**
+//* Verifies the @media type.
+//*
+//* @param string $type The media type.
+//*
+//* @return string The @media stack.
+//*
+@function verify-media-type( $type ) {
+	// If type is not a string, throw an error.
+	@if 'string' != type-of( $type ) {
+		@error 'Type should be a string, found `#{type-of( $type )}`';
+	}
+
+	@return $type;
+}
+
+//**
+//* Verifies the features provided match specific parameters.
+//*   - Must be a list or a string.
+//*   - If a list:
+//*     - Must have a length no greater than 2.
+//*     - Must use a space as a separator.
+//*
+//* @param list $features The requested @media features.
+//*
+//* @return list
+//*
+@function verify-media-features( $features ) {
+	@each $feature in $features {
+
+		// If not a string or a list, throw an error.
+		@if not index( ( 'string', 'list' ), type-of( $feature ) )  {
+			@error 'Feature must be a string or a list, found `#{type-of( $feature )}`.';
+		}
+
+		// If we have a string, add as a key if there are breakpoints set.
+		@if 'string' == type-of( $feature ) and map-has-key( $breakpoints, $feature ) {
+			$features: set-nth( $features, index( $features, $feature ), min-width map-get( $breakpoints, $feature ) );
+		} @else {
+			// If more than two items in the feature, throw an error.
+			@if 2 < length( $feature ) {
+				@error 'Features must be no more that two items, found #{length( $feature )}: `#{$feature}`';
+			}
+		}
+	}
+
+	@return $features;
+}
+
+//**
+//* Builds the @media stack.
+//*
+//* @uses verify-media-type()
+//* @uses verify-media-features()
+//*
+//* @param mixed  $features The requested @media features.
+//* @param string $type     The media type.
+//*
+//* @return string The @media stack.
+//*
+@function build-media-query( $features, $type: '' ) {
+	$query: verify-media-type( $type );
+
+	@each $name, $value in verify-media-features( $features ) {
+		// If value has a breakpoint, use that value.
+		@if map-has-key( $breakpoints, $value ) {
+			$value: map-get( $breakpoints, $value );
+		}
+
+		// Add the unit to width and height features.
+		@if str-index( $name, 'width' ) or str-index( $name, 'height' ) {
+			$value: $value + 0px; // sass-lint:disable-line zero-unit
+		}
+
+		// Empty query, start building.
+		@if '' == $query {
+			$query: '(#{$name}: #{$value})';
+		} @else {
+			$query: '#{$query} and (#{$name}: #{$value})';
+		}
+	}
+
+	@return $query;
+}
+
+//**
+//* Builds the @media stack.
+//*
+//* @uses build-media-query()
+//*
+//* @param mixed  $args The media stack arguments.
+//*
+//* @return string
+//*
+@function build-media-stack( $args ) {
+	$stack: false;
+
+	@if 'map' == type-of( $args ) {
+		@each $type, $features in $args {
+			// Empty stack, start building.
+			@if not $stack {
+				$stack: build-media-query( $features, $type );
+			} @else {
+				$stack: '#{$stack}, #{build-media-query( $features, $type )}';
+			}
+		}
+	} @else {
+		$stack: build-media-query( $args );
+	}
+
+	@return $stack;
+}

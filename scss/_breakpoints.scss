@@ -1,0 +1,24 @@
+// Default breakpoints (based on x-axis using width).
+$breakpoints: (
+	small:    480,
+	medium:   720,
+	large:    960,
+	huge:     1200,
+	gigantic: 1600,
+) !default;
+
+// Verify breakpoints is a map.
+@if 'map' != type-of( $breakpoints ) {
+	@error 'Breakpoints must be a Sass map, found #{type-of( $breakpoints )}.';
+}
+
+// Verify the key => value pair is string => number and the number is unitless.
+@each $key, $value in $breakpoints {
+	@if 'string' != type-of( $key ) or 'number' != type-of( $value ) {
+		@error 'Breakpoint values must be a string and number pair, found `#{$key} (#{type-of( $key )}) => #{$value} (#{type-of( $value )})`.';
+	}
+
+	@if not unitless( $value ) {
+		@error 'Values must be unitless, found `#{$value} on #{$key}`.';
+	}
+}
