@@ -2,7 +2,6 @@
   "name": "sass-media-stack",
   "version": "0.0.1",
   "description": "Sass mixin which builds media queries, from simple to complex.",
-  "main": "false",
   "scripts": {
     "test": "npm run tests"
   },
