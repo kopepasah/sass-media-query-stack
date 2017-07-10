@@ -1,5 +1,5 @@
 {
-  "name": "sass-media-stack",
+  "name": "sass-media-query-stack",
   "version": "0.0.1",
   "description": "Sass mixin which builds media queries, from simple to complex.",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xwp/sass-media-stack.git"
+    "url": "git+https://github.com/xwp/sass-media-query-stack.git"
   },
   "keywords": [
     "sass",
@@ -25,9 +25,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xwp/sass-media-stack/issues"
+    "url": "https://github.com/xwp/sass-media-query-stack/issues"
   },
-  "homepage": "https://github.com/xwp/sass-media-stack#readme",
+  "homepage": "https://github.com/xwp/sass-media-query-stack#readme",
   "files": [],
-  "main": "_media-stack.scss"
+  "main": "_mqs.scss"
 }
