@@ -1,5 +1,5 @@
 {
-  "name": "sass-media-query-stack",
+  "name": "sass-mqs",
   "version": "0.0.1",
   "description": "Sass mixin which builds media queries, from simple to complex.",
   "scripts": {
