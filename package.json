@@ -3,12 +3,9 @@
   "version": "0.0.1",
   "description": "Sass mixin which builds media queries, from simple to complex.",
   "scripts": {
-    "test": ""
+    "test": "node ./test/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xwp/sass-media-query-stack.git"
-  },
+  "repository": "git+https://github.com/xwp/sass-media-query-stack.git",
   "keywords": [
     "sass",
     "scss",
@@ -31,6 +28,9 @@
   "files": [],
   "main": "_mqs.scss",
   "devDependencies": {
-    "node-sass": "^4.5.3"
+    "chalk": "^2.0.1",
+    "convert-to-spaces": "^1.0.2",
+    "node-sass": "^4.5.3",
+    "strip-indent": "^2.0.0"
   }
 }
