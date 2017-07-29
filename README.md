@@ -8,7 +8,7 @@ Media Query Stack solves this problem by allowing developers to create simple me
 
 ```bash
 yarn add sass-mqs --dev
-// OR
+# OR
 npm install sass-mqs --save-dev
 ```
 
