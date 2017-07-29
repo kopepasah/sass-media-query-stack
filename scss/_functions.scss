@@ -34,8 +34,12 @@
 		}
 
 		// If we have a string, add as a key if there are breakpoints set.
-		@if 'string' == type-of( $feature ) and map-has-key( $breakpoints, $feature ) {
-			$features: set-nth( $features, index( $features, $feature ), min-width map-get( $breakpoints, $feature ) );
+		@if 'string' == type-of( $feature ) {
+			@if not map-has-key( $breakpoints, $feature ) {
+				@error 'String `#{$feature}` found, but no key is set in breakpoints: #{$breakpoints}';
+			} @else {
+				$features: set-nth( $features, index( $features, $feature ), min-width map-get( $breakpoints, $feature ) );
+			}
 		} @else {
 			// If more than two items in the feature, throw an error.
 			@if 2 < length( $feature ) {
