@@ -1,6 +1,6 @@
 {
   "name": "sass-mqs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sass mixin which builds media queries, from simple to complex.",
   "scripts": {
     "test": "node ./test/index.js"
