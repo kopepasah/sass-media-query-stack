@@ -25,7 +25,6 @@
     "url": "https://github.com/xwp/sass-media-query-stack/issues"
   },
   "homepage": "https://github.com/xwp/sass-media-query-stack#readme",
-  "files": [],
   "main": "_mqs.scss",
   "devDependencies": {
     "chalk": "^2.0.1",
